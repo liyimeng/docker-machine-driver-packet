@@ -12,7 +12,7 @@ import (
 	"github.com/docker/machine/libmachine/mcnflag"
 	"github.com/docker/machine/libmachine/ssh"
 	"github.com/docker/machine/libmachine/state"
-	"github.com/packethost/packngo"
+	"github.com/packethost/packngo" //we should be able to replace this package with our own and provision from our data center.
 )
 
 const (
@@ -182,6 +182,7 @@ func (d *Driver) Create() error {
 	d.SSHKeyID = key.ID
 
 	client := d.getClient()
+	// this createRequest should be sent to our data center!
 	createRequest := &packngo.DeviceCreateRequest{
 		Hostname:     d.MachineName,
 		Plan:         d.Plan,
